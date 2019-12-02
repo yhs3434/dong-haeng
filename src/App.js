@@ -40,14 +40,14 @@ function App() {
           <Route path="/Map">
             <Map />
           </Route>
-          <Route path="/MyPage">
-            <MyPage />
+          <Route path="/MyPage" component={MyPage}>
+            
           </Route>
           <Route path="/Search">
             <Search />
           </Route>
-          <Route path="/ServiceCenter">
-            <ServiceCenter />
+          <Route path="/ServiceCenter" component={ServiceCenter}>
+            
           </Route>
           <Route path="/TimeTable">
             <TimeTable />

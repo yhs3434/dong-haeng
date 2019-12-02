@@ -1,5 +1,12 @@
 import React, {Component} from 'react';
 import ButtonImage1 from '../images/mypage1.png';
+import logo from '../images/logo_donghaeng.png'
+import {Route, Switch, Link} from 'react-router-dom';
+import Information from './mypages/1_information';
+import Favorite from './mypages/2_favorite';
+import Recent from './mypages/3_recent';
+import Seemap from './mypages/4_seemap';
+import Searchlog from './mypages/5_searchlog';
 
 class MyPage extends Component {
     render() {
@@ -10,45 +17,55 @@ class MyPage extends Component {
                 flexWrap: 'wrap',
                 justifyContent: 'center'
             },
-            box: {
+            head: {
                 display: 'flex',
-                flexDirection: 'column',
-                width: '300px',
-                height: '200px',
-                margin: '3rem',
-                border: 'thin solid black',
-                boxShadow: '1px 2px 5px gray',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '3rem'
+                flexDirection: 'row',
+                height: '100px',
+                alignItems: 'center'
             },
-            image: {
-                margin: '3rem'
+            logo: {
+                width: '100px',
+                height: '70px',
+                marginLeft: '80px'
+            },
+            mid: {
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'space-around'
             }
         }
         return(
-            <div style={style.wrap}>
-                <div style={style.box}>
-                    <p><h4>회원 정보 수정</h4></p>
-                    <p>서비스에서 사용하는 기본 정보를 수정합니다.</p>
+            <div>
+                <div style={style.head}>
+                    <img src={logo} style={style.logo} />
+                    <h1>마이페이지</h1>
                 </div>
-                <div style={style.box}>
-                    <p><h4>자주 가는 경로 등록</h4></p>
-                    <p>자주가는 경로를 등록시켜 시작 페이지에서부터 바로 경로를
-                        찾을 수 있도록 합니다.
-                    </p>
+                <hr/>
+                <div style={style.mid}>
+                    <Link to={`${this.props.match.url}/information`}><span>회원 정보 수정</span></Link>
+                    <Link to={`${this.props.match.url}/favorite`}><span>자주 가는 경로 등록</span></Link>
+                    <Link to={`${this.props.match.url}/recent`}><span>최근 경로 검색</span></Link>
+                    <Link to={`${this.props.match.url}/seemap`}><span>지도 보기 설정</span></Link>
+                    <Link to={`${this.props.match.url}/searchlog`}><span>도움말 검색 내역</span></Link>
                 </div>
-                <div style={style.box}>
-                    <p><h4>최근 경로 보기</h4></p>
-                    <p>최근 검색한 모든 경로를 모아서 봅니다.</p>
-                </div>
-                <div style={style.box}>
-                    <p><h4>지도 보기 설정</h4></p>
-                    <p>색상과 돋보기 기능의 세부사항을 설정합니다.</p>
-                </div>
-                <div style={style.box}>
-                    <p><h4>검색했던 도움말</h4></p>
-                    <p>최근 검색한 모든 도움말을 모아서 봅니다.</p>
+                <div>
+                    <Switch>
+                        <Route path={`${this.props.match.path}/information`}>
+                            <Information/>
+                        </Route>
+                        <Route path={`${this.props.match.path}/favorite`}>
+                            <Favorite/>
+                        </Route>
+                        <Route path={`${this.props.match.path}/recent`}>
+                            <Recent/>
+                        </Route>
+                        <Route path={`${this.props.match.path}/seemap`}>
+                            <Seemap/>
+                        </Route>
+                        <Route path={`${this.props.match.path}/searchlog`}>
+                            <Searchlog/>
+                        </Route>
+                    </Switch>
                 </div>
             </div>
         )
