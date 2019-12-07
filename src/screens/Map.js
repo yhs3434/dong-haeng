@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import busImage from '../images/bus.png';
+import mapImage from '../images/map.PNG';
 
 class Map extends Component {
     render() {
@@ -12,16 +14,20 @@ class Map extends Component {
                 display: 'flex',
                 flexDirection: 'column',
                 width: '35%',
-                height: '600px',
-                backgroundColor: 'green'
+                height: '1000px',
             },
             rightArticle: {
                 width: '65%',
-                height: '600px',
+                height: '1000px',
                 backgroundColor: 'blue'
             },
             leftTopArticle: {
-                height: '30%'
+                display: 'flex',
+                flexDirection: 'row',
+                height: '30%',
+                justifyContent: 'center',
+                alignItems: 'center'
+                
             },
             leftBottomArticle: {
                 height: '70%',
@@ -32,14 +38,26 @@ class Map extends Component {
             <div style={style.wrap}>
                 <article style={style.leftArticle}>
                     <section style={style.leftTopArticle}>
-                        hllo
+                        <div style={{display:'flex', flexDirection:'column'}}>
+                            <div>
+                                <span>출발지</span>
+                                <input type='text' />
+                            </div>
+                            <div>
+                                <span>도착지</span>
+                                <input type='text' />
+                            </div>
+                        </div>
+                        <div>
+                            <button>검색</button>
+                        </div>
                     </section>
                     <section style={style.leftBottomArticle}>
-                        bye
+                        <img src={busImage} style={{width:'100%', height:'100%'}}/>
                     </section>
                 </article>
                 <article style={style.rightArticle}>
-
+                    <img src={mapImage} style={{width:'100%', height:'100%'}} />
                 </article>
             </div>
         )

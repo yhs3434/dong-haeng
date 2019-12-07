@@ -20,3 +20,17 @@
 .App-link {
   color: #09d3ac;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+button:hover {
+  background-color: red;
+  border: none;
+}
+
+button:active {
+  background-color: yellow;
+}

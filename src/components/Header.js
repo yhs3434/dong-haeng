@@ -32,6 +32,24 @@ class Header extends Component {
             img: {
                 width: '80px',
                 height: '50px'
+            },
+            buttonEmenrgency: {
+                backgroundColor: '#F4AC33',
+                color: 'white',
+                padding: '0.5rem',
+                margin: '0.5rem',
+                width: '200px',
+                height: '60px',
+                boxShadow: 'gray 1px 1px 5px',
+                borderRadius: '10%'
+            },
+            buttonRest: {
+                backgroundColor: 'transparent',
+                color: 'black',
+                padding: '0.5rem',
+                margin: '0.5rem',
+                width: '250px',
+                height: '60px'
             }
         }
         return(
@@ -43,9 +61,9 @@ class Header extends Component {
                     <h1></h1>
                 </section>
                 <section style={style.box}>
-                    <button onClick={()=>(this.myPageClicked())}>마이 페이지</button>
-                    <button onClick={()=>(this.serviceCenterClicked())}>고객 센터</button>
-                    <button>긴급전화 119</button>
+                    <button onClick={()=>(this.myPageClicked())} style={style.buttonRest}>마이 페이지</button>
+                    <button onClick={()=>(this.serviceCenterClicked())} style={style.buttonRest}>고객 센터</button>
+                    <button style={style.buttonEmenrgency}>긴급전화 119</button>
                 </section>
             </div>
         )

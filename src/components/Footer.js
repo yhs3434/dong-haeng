@@ -6,14 +6,25 @@ export default class Footer extends Component {
             wrap: {
                 display: 'flex',
                 justifyContent: 'center',
-                backgroundColor: 'gray',
+                backgroundColor: '#2D3B44',
                 paddingTop: '1rem',
-                paddingBottom: '1rem'
+                paddingBottom: '1rem',
+                marginTop: '2rem'
             }
         }
         return (
             <div style={style.wrap}>
-                <span>Footer</span>
+                <div style={{color: 'white'}}>
+                    <span>고객센터</span>
+                    <span>｜</span>
+                    <span>지도 정보 수정</span>
+                    <span>｜</span>
+                    <span>신규 장소 등록</span>
+                    <span>｜</span>
+                    <span>이용약관</span>
+                    <span>｜</span>
+                    <span>개인정보처리방침</span>
+                </div>
             </div>
         )
     }
