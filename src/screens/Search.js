@@ -4,6 +4,7 @@ import tableKangseo from '../images/tables/kangseo.PNG';
 import tableKangnam1 from '../images/tables/kangnam1.PNG';
 import tableKangnam2 from '../images/tables/kangnam2.PNG';
 import tableGuro from '../images/tables/guro.PNG';
+import mainImage from '../images/main_image.jpg';
 
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
@@ -41,6 +42,19 @@ class Search extends Component {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
+                justifyContent: 'center',
+                backgroundImage: `url(${mainImage})`,
+                width: '100%',
+                height: '700px',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
+            },
+            wrap2: {
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                
             },
             div: {
                 display: 'flex',
@@ -53,7 +67,8 @@ class Search extends Component {
                 flexDirection: 'column',
                 fontSize: '30px',
                 alignItems: 'center',
-                margin: '2rem'
+                margin: '2rem',
+                color: 'white',
             }
             ,
             image: {
@@ -104,7 +119,7 @@ class Search extends Component {
                         <p style={{display:'flex', alignItems:'center', fontSize: '12px'}}><Icon component={gpsFixed} style={{width:'1rem', height:'1rem', marginRight:'0.4rem'}}/>현재 위치 : 경기도 용인시 수지구 죽전동 112-421</p>
                     </div>
                 </div>
-                <div style={style.wrap}>
+                <div style={style.wrap2}>
                     <table style={{width: '80%', margin:'3rem', boxShadow: 'gray 1px 1px 5px', borderCollapse: 'collapse'}}>
                         <tbody>
                             <tr>

@@ -21,7 +21,7 @@ function App() {
       backgroundColor: 'white'
     },
     main: {
-      marginTop: '87px'
+      marginTop: '55px'
     }
   };
   return (
