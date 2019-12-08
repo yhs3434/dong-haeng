@@ -67,17 +67,21 @@ class ServiceCenter extends Component {
                 <hr/>
                 <div style={style.tail}>
                     <div style={style.left}>
-                        <p><Link to={`${this.props.match.url}/faq`}>자주 사용되는 도움말</Link></p>
-                        <p><Link to={`${this.props.match.url}/map`}>지도 검색</Link></p>
-                        <p><Link to={`${this.props.match.url}/call`}>콜택시 이용방법</Link></p>
-                        <p><Link to={`${this.props.match.url}/location`}>장소 추가 또는 수정</Link></p>
-                        <p><Link to={`${this.props.match.url}/protect`}>개인 정보 보호, 접근성 알아보기</Link></p>
-                        <p><Link to={`${this.props.match.url}/login`}>로그인 및 가입</Link></p>
-                        <p><Link to={`${this.props.match.url}/resolve`}>문제 해결 또는 의견 보내기</Link></p>
+                        <p><Link to={`${this.props.match.url}/faq`} className="sc_link">자주 사용되는 도움말</Link></p>
+                        <p><Link to={`${this.props.match.url}/map`} className="sc_link">지도 검색</Link></p>
+                        <p><Link to={`${this.props.match.url}/call`} className="sc_link">콜택시 이용방법</Link></p>
+                        <p><Link to={`${this.props.match.url}/location`} className="sc_link">장소 추가 또는 수정</Link></p>
+                        <p><Link to={`${this.props.match.url}/protect`} className="sc_link">개인 정보 보호, 접근성 알아보기</Link></p>
+                        <p><Link to={`${this.props.match.url}/login`} className="sc_link">로그인 및 가입</Link></p>
+                        <p><Link to={`${this.props.match.url}/resolve`} className="sc_link">문제 해결 또는 의견 보내기</Link></p>
                     </div>
+                    
                     <div style={style.right}>
                         <p>{console.log(`${this.props.match.path}/faq`)}</p>
                         <Switch>
+                            <Route exact path={`${this.props.match.path}/`}>
+                                <FaqService/>
+                            </Route>
                             <Route path={`${this.props.match.path}/faq`}>
                                 <FaqService/>
                             </Route>

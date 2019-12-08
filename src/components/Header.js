@@ -26,7 +26,6 @@ class Header extends Component {
             },
             box: {
                 display: 'flex',
-                width: '300px',
                 justifyContent: 'center'
             },
             img: {
@@ -38,8 +37,6 @@ class Header extends Component {
                 color: 'white',
                 padding: '0.5rem',
                 margin: '0.5rem',
-                width: '200px',
-                height: '60px',
                 boxShadow: 'gray 1px 1px 5px',
                 borderRadius: '10%'
             },
@@ -48,14 +45,12 @@ class Header extends Component {
                 color: 'black',
                 padding: '0.5rem',
                 margin: '0.5rem',
-                width: '250px',
-                height: '60px'
             }
         }
         return(
             <div style={style.wrap} >
                 <section style={style.box} onClick={()=>(this.mainLogoClicked())}>
-                    <img src={logo} style={style.img} />
+                    <a href="#"><img src={logo} style={style.img} /></a>
                 </section>
                 <section style={style.box}>
                     <h1></h1>
@@ -63,7 +58,7 @@ class Header extends Component {
                 <section style={style.box}>
                     <button onClick={()=>(this.myPageClicked())} style={style.buttonRest}>마이 페이지</button>
                     <button onClick={()=>(this.serviceCenterClicked())} style={style.buttonRest}>고객 센터</button>
-                    <button style={style.buttonEmenrgency}>긴급전화 119</button>
+                    <button onClick={()=>(alert('준비중입니다'))} style={style.buttonEmenrgency}>긴급전화 119</button>
                 </section>
             </div>
         )

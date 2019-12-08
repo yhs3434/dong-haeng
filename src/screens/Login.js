@@ -24,6 +24,9 @@ class Login extends Component {
             inputWrap: {
                 display: 'flex',
                 flexDirection: 'column'
+            },
+            span: {
+                margin: '1rem'
             }
         }
         return(
@@ -31,15 +34,17 @@ class Login extends Component {
                 <div style={style.secondWrap}>
                     <p><img src={logo} style={style.image}/></p>
                     <div style={style.inputWrap}>
-                        <input type='text' placeholder='아이디/ID'/>
-                        <input type='password' placeholder='비밀번호/PASSWORD'/>
+                        <input className="lg_input" type='text' placeholder='아이디/ID'/>
+                        <input className="lg_input" type='password' placeholder='비밀번호/PASSWORD'/>
                     </div>
-                    <p><button>로그인/LOG IN</button></p>
-                    <p><input type='checkbox'/>로그인 상태 유지</p>
+                    <p><button className="lg_btn">로그인/LOG IN</button></p>
+                    <p style={{alignSelf: 'flex-start', marginLeft: '1rem'}}><input type='checkbox'/>로그인 상태 유지</p>
                     <div>
-                        <span>아이디 찾기</span>
-                        <span>비밀번호 찾기</span>
-                        <span>회원가입</span>
+                        <span style={style.span}>아이디 찾기</span>
+                        <span>｜</span>
+                        <span style={style.span}>비밀번호 찾기</span>
+                        <span>｜</span>
+                        <span style={style.span}>회원가입</span>
                     </div>
                 </div>
             </div>

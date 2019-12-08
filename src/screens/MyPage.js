@@ -9,6 +9,10 @@ import Seemap from './mypages/4_seemap';
 import Searchlog from './mypages/5_searchlog';
 
 class MyPage extends Component {
+    state = {
+        
+    }
+
     render() {
         const style= {
             wrap: {
@@ -32,6 +36,12 @@ class MyPage extends Component {
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'space-around'
+            },
+            link: {
+                textDecoration: 'none',
+            },
+            hr: {
+                border: 'solid 0.6px #0C335A',
             }
         }
         return(
@@ -40,16 +50,21 @@ class MyPage extends Component {
                     <img src={logo} style={style.logo} />
                     <h1>마이페이지</h1>
                 </div>
-                <hr/>
-                <div style={style.mid}>
-                    <Link to={`${this.props.match.url}/information`}><span>회원 정보 수정</span></Link>
-                    <Link to={`${this.props.match.url}/favorite`}><span>자주 가는 경로 등록</span></Link>
-                    <Link to={`${this.props.match.url}/recent`}><span>최근 경로 검색</span></Link>
-                    <Link to={`${this.props.match.url}/seemap`}><span>지도 보기 설정</span></Link>
-                    <Link to={`${this.props.match.url}/searchlog`}><span>도움말 검색 내역</span></Link>
+                <hr style={style.hr}/>
+                <div className="link_wrap" style={style.mid}>
+                    <Link className="mp_link" to={`${this.props.match.url}/information`} 
+                    style={style.link}><span>회원 정보 수정</span></Link>
+                    <Link className="mp_link" to={`${this.props.match.url}/favorite`} style={style.link}><span>자주 가는 경로 등록</span></Link>
+                    <Link className="mp_link" to={`${this.props.match.url}/recent`} style={style.link}><span>최근 경로 검색</span></Link>
+                    <Link className="mp_link" to={`${this.props.match.url}/seemap`} style={style.link}><span>지도 보기 설정</span></Link>
+                    <Link className="mp_link" to={`${this.props.match.url}/searchlog`} style={style.link}><span>도움말 검색 내역</span></Link>
                 </div>
+                <hr style={style.hr}/>
                 <div>
                     <Switch>
+                        <Route exact path={`${this.props.match.path}/`}>
+                            <Information/>
+                        </Route>
                         <Route path={`${this.props.match.path}/information`}>
                             <Information/>
                         </Route>

@@ -21,16 +21,146 @@
   color: #09d3ac;
 }
 
-button {
-  background-color: transparent;
+.if_btn {
+  box-shadow: gray 1px 1px 5px;
+  font-size: 1em;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 10%;
+  background-color: #0C335A;
+  color: white;
   border: none;
 }
 
-button:hover {
-  background-color: red;
+.if_btn:hover {
+  color: white;
+  
+  background-color: rgb(6, 17, 27);
   border: none;
 }
 
-button:active {
-  background-color: yellow;
+.if_btn:active {
+  background-color: black;
+}
+
+a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.link_wrap {
+  margin: 2rem;
+}
+
+.mp_link {
+  padding: 0.5rem;
+  font-size: 18px;
+}
+
+.mp_link:hover {
+  background-color: #0C335A;
+  color: white;
+  border-radius: 10%;
+  box-shadow: gray 1px 1px 5px;
+}
+
+.mp_link:active {
+  background-color: black;
+  color: white;
+  border-radius: 10%;
+  box-shadow: gray 1px 1px 5px;
+}
+
+.se_btn:hover {
+  background-color: black;
+}
+
+.lg_btn {
+  width: 350.78px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #0C335A;
+  color: white;
+  border: none;
+  border-radius: 20px;
+}
+
+.lg_btn:hover {
+  background-color: rgb(62, 110, 158);
+}
+
+.lg_btn:active {
+  background-color: rgb(144, 173, 202);
+}
+
+.se_input {
+  border: none;
+  background-color: white;
+  padding: 0.5rem;
+  box-shadow: gray 1px 1px 5px;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.se_search_btn {
+  border: none;
+  background-color: #0C335A;
+  color: white;
+  padding: 0.6rem;
+  border-radius: 5px;
+  box-shadow: gray 1px 1px 5px;
+}
+
+.se_search_btn:hover {
+  background-color: rgb(62, 110, 158);
+}
+
+.se_search_btn:active {
+  background-color: rgb(144, 173, 202);
+}
+
+.lg_input {
+  width: 340.78px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  border-radius: 20px;
+}
+
+.sc_link {
+  padding: 0.5rem;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.sc_link:hover {
+  background-color: #0C335A;
+  color: white;
+  border-radius: 10%;
+  box-shadow: gray 1px 1px 5px;
+}
+
+.sc_link:active {
+  background-color: black;
+  color: white;
+  border-radius: 10%;
+  box-shadow: gray 1px 1px 5px;
+}
+
+select {
+  padding: 0.3rem;
+  margin-right: 0.5rem;
+  border-radius: 10%;
+  border: 1px solid #0C335A;
+}
+
+input {
+  padding: 0.3rem;
+  margin-right: 0.5rem;
+  border: 1px solid #0C335A;
 }
