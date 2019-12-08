@@ -14,7 +14,7 @@ export default class Footer extends Component {
         }
         return (
             <div style={style.wrap}>
-                <div style={{color: 'white'}}>
+                <div style={{display:'flex', flexWrap: 'wrap', color: 'white'}}>
                     <span>고객센터</span>
                     <span>｜</span>
                     <span>지도 정보 수정</span>

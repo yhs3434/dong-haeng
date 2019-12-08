@@ -9,6 +9,8 @@ import LocationService from './serviceCenters/4_location';
 import ProtectService from './serviceCenters/5_protect';
 import LoginService from './serviceCenters/6_login';
 import ResolveService from './serviceCenters/7_resolve';
+import {connect} from 'react-redux';
+
 
 class ServiceCenter extends Component {
     render() {
@@ -42,6 +44,12 @@ class ServiceCenter extends Component {
             tail: {
                 display: 'flex',
                 flexDirection: 'row',
+                flexWrap: 'wrap',
+                padding: '2rem'
+            },
+            tailSmall: {
+                display: 'flex',
+                flexDirection: 'column',
                 padding: '2rem'
             },
             left: {
@@ -49,31 +57,39 @@ class ServiceCenter extends Component {
                 display: 'flex',
                 flexDirection: 'column'
             },
+            leftSmall: {
+                display: 'flex',
+                flexWrap: 'wrap'
+            },
             right: {
                 flex: 7,
                 display: 'flex',
                 flexDirection: 'column'
             }
         }
+
+        let sizeBool = (this.props.screenWidth>720)
         
         return(
             <div>
                 <div style={style.head}>
                     <img src={logo} style={style.logo} />
                     <h1>고객센터</h1>
-                    <input type='text' style={{marginLeft: '50px'}}/>
-                    <button>검색</button>
+                    <div style={sizeBool?{}:{display:'none'}}>
+                        <input type='text' style={{marginLeft: '50px'}}/>
+                        <button>검색</button>
+                    </div>
                 </div>
                 <hr/>
-                <div style={style.tail}>
-                    <div style={style.left}>
-                        <p><Link to={`${this.props.match.url}/faq`} className="sc_link">자주 사용되는 도움말</Link></p>
-                        <p><Link to={`${this.props.match.url}/map`} className="sc_link">지도 검색</Link></p>
-                        <p><Link to={`${this.props.match.url}/call`} className="sc_link">콜택시 이용방법</Link></p>
-                        <p><Link to={`${this.props.match.url}/location`} className="sc_link">장소 추가 또는 수정</Link></p>
-                        <p><Link to={`${this.props.match.url}/protect`} className="sc_link">개인 정보 보호, 접근성 알아보기</Link></p>
-                        <p><Link to={`${this.props.match.url}/login`} className="sc_link">로그인 및 가입</Link></p>
-                        <p><Link to={`${this.props.match.url}/resolve`} className="sc_link">문제 해결 또는 의견 보내기</Link></p>
+                <div style={sizeBool?style.tail:style.tailSmall}>
+                    <div style={sizeBool?style.left:style.leftSmall}>
+                        <p><Link to={`${this.props.match.url}/faq`} style={{boxShadow: 'gray 1px 1px 5px', marginRight: '1rem'}} className="sc_link">자주 사용되는 도움말</Link></p>
+                        <p><Link to={`${this.props.match.url}/map`} style={{boxShadow: 'gray 1px 1px 5px', marginRight: '1rem'}} className="sc_link">지도 검색</Link></p>
+                        <p><Link to={`${this.props.match.url}/call`} style={{boxShadow: 'gray 1px 1px 5px', marginRight: '1rem'}} className="sc_link">콜택시 이용방법</Link></p>
+                        <p><Link to={`${this.props.match.url}/location`} style={{boxShadow: 'gray 1px 1px 5px', marginRight: '1rem'}} className="sc_link">장소 추가 또는 수정</Link></p>
+                        <p><Link to={`${this.props.match.url}/protect`} style={{boxShadow: 'gray 1px 1px 5px', marginRight: '1rem'}} className="sc_link">개인 정보 보호, 접근성 알아보기</Link></p>
+                        <p><Link to={`${this.props.match.url}/login`} style={{boxShadow: 'gray 1px 1px 5px', marginRight: '1rem'}} className="sc_link">로그인 및 가입</Link></p>
+                        <p><Link to={`${this.props.match.url}/resolve`} style={{boxShadow: 'gray 1px 1px 5px', marginRight: '1rem'}} className="sc_link">문제 해결 또는 의견 보내기</Link></p>
                     </div>
                     
                     <div style={style.right}>
@@ -111,4 +127,8 @@ class ServiceCenter extends Component {
     }
 }
 
-export default ServiceCenter;
+const mapStateToProps = (state) => ({
+    screenWidth: state.resize.screenWidth
+});
+
+export default connect(mapStateToProps)(ServiceCenter);

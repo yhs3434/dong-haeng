@@ -1,12 +1,41 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {useHistory, withRouter} from 'react-router-dom';
 import logo from '../images/logo_donghaeng.png';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import {resizing} from '../store/modules/resize';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 class Header extends Component {
     state = {
-        mypageAnchor: false
+        mypageAnchor: null,
+        menuAnchor: null
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.resize);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.resize);
+    }
+
+    resize = () => {
+        this.props.resizing(window.innerWidth);
+    }
+
+    menuAnchorClicked = (evt) => {
+        this.setState({
+            menuAnchor: evt.currentTarget
+        });
+    }
+
+    menuAnchorClose = () => {
+        this.setState({
+            menuAnchor: null,
+        });
     }
 
     myPageAnchorClicked = (evt) => {
@@ -83,7 +112,7 @@ class Header extends Component {
                 <section style={style.box}>
                     <h1></h1>
                 </section>
-                <section style={style.box}>
+                <section style={this.props.screenWidth<720?{display:'none'}:style.box}>
                     <button onClick={this.myPageAnchorClicked} style={style.buttonRest}>마이 페이지</button>
                     <div style={{display:'flex', flexDirection: 'column'}}>
                         <button onClick={()=>(this.serviceCenterClicked())} style={style.buttonRest}>고객 센터</button>
@@ -94,9 +123,29 @@ class Header extends Component {
                     </div>
                     <button onClick={()=>(alert('준비중입니다'))} style={style.buttonEmenrgency}>긴급전화 119</button>
                 </section>
+                <section style={this.props.screenWidth<720?{display:'flex'}:{display:'none'}}>
+                    <IconButton onClick={this.menuAnchorClicked}>
+                        <MenuIcon/>
+                    </IconButton>
+                    <Menu open={Boolean(this.state.menuAnchor)} anchorEl={this.state.menuAnchor} onClose={this.menuAnchorClose}>
+                        <MenuItem>로그인</MenuItem>
+                        <MenuItem>마이 페이지</MenuItem>
+                        <MenuItem>고객 센터</MenuItem>
+                        <MenuItem>긴급전화 119</MenuItem>
+                    </Menu>
+                </section>
             </div>
         )
     }
 }
 
-export default withRouter(Header);
+const mapStateToProps = state => ({
+    screenWidth: state.resize.screenWidth,
+});
+
+const mapDispatchToProps = dispatch => ({
+    resizing: screenWidth => dispatch(resizing(screenWidth))
+});
+
+export default withRouter(connect(mapStateToProps,
+    mapDispatchToProps)(Header));

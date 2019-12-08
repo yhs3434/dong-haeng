@@ -7,10 +7,27 @@ import Favorite from './mypages/2_favorite';
 import Recent from './mypages/3_recent';
 import Seemap from './mypages/4_seemap';
 import Searchlog from './mypages/5_searchlog';
+import {AssignmentInd, Star, NearMe, Map, EventNote} from '@material-ui/icons';
+import IconButton from '@material-ui/core/IconButton';
+import {connect} from 'react-redux';
 
 class MyPage extends Component {
     state = {
-        
+        sizeBool: 0
+    }
+
+    resized = () => {
+        this.setState({
+            sizeBool: this.props.screenWidth>720
+        })
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.resized);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.resized);
     }
 
     render() {
@@ -44,6 +61,9 @@ class MyPage extends Component {
                 border: 'solid 0.6px #0C335A',
             }
         }
+
+        let sizeBool = this.state.sizeBool;
+
         return(
             <div>
                 <div style={style.head}>
@@ -51,13 +71,21 @@ class MyPage extends Component {
                     <h1>마이페이지</h1>
                 </div>
                 <hr style={style.hr}/>
-                <div className="link_wrap" style={style.mid}>
+                <div className="link_wrap" style={sizeBool?style.mid:{display:'none'}}>
                     <Link className="mp_link" to={`${this.props.match.url}/information`} 
                     style={style.link}><span>회원 정보 수정</span></Link>
                     <Link className="mp_link" to={`${this.props.match.url}/favorite`} style={style.link}><span>자주 가는 경로 등록</span></Link>
                     <Link className="mp_link" to={`${this.props.match.url}/recent`} style={style.link}><span>최근 경로 검색</span></Link>
                     <Link className="mp_link" to={`${this.props.match.url}/seemap`} style={style.link}><span>지도 보기 설정</span></Link>
                     <Link className="mp_link" to={`${this.props.match.url}/searchlog`} style={style.link}><span>도움말 검색 내역</span></Link>
+                </div>
+                <div className="link_wrap" style={sizeBool?{display:'none'}:style.mid}>
+                    <Link className="mp_link" to={`${this.props.match.url}/information`} 
+                    style={style.link}><IconButton style={{color:'black'}}><AssignmentInd/></IconButton></Link>
+                    <Link className="mp_link" to={`${this.props.match.url}/favorite`} style={style.link}><IconButton style={{color:'black'}} component={Star}/></Link>
+                    <Link className="mp_link" to={`${this.props.match.url}/recent`} style={style.link}><IconButton style={{color:'black'}} component={NearMe}/></Link>
+                    <Link className="mp_link" to={`${this.props.match.url}/seemap`} style={style.link}><IconButton style={{color:'black'}} component={Map}/></Link>
+                    <Link className="mp_link" to={`${this.props.match.url}/searchlog`} style={style.link}><IconButton style={{color:'black'}} component={EventNote}/></Link>
                 </div>
                 <hr style={style.hr}/>
                 <div>
@@ -87,4 +115,8 @@ class MyPage extends Component {
     }
 }
 
-export default MyPage;
+const mapStateToProps = (state) => ({
+    screenWidth: state.resize.screenWidth
+});
+
+export default connect(mapStateToProps)(MyPage);
