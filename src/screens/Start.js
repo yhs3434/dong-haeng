@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 import TypoImage from '../images/typo.PNG';
 
 export default class Start extends Component {
+    componentDidMount() {
+        setTimeout(()=>{
+            document.location.href = "/search";
+        }, 3000);
+    }
     render() {
         const style= {
             wrap: {

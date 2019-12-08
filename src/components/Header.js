@@ -1,9 +1,37 @@
 import React, {Component} from 'react';
 import {useHistory, withRouter} from 'react-router-dom';
 import logo from '../images/logo_donghaeng.png';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 class Header extends Component {
+    state = {
+        mypageAnchor: false
+    }
+
+    myPageAnchorClicked = (evt) => {
+        this.setState({
+            mypageAnchor: evt.currentTarget
+        })
+    }
+
+    myPageAnchorClose = () => {
+        this.setState({
+            mypageAnchor: null
+        })
+    }
+
+    loginClicked = () => {
+        this.setState({
+            mypageAnchor: null
+        });
+        this.props.history.push("/login");
+    }
+
     myPageClicked = () => {
+        this.setState({
+            mypageAnchor: null
+        });
         this.props.history.push("/mypage")
     }
 
@@ -56,8 +84,14 @@ class Header extends Component {
                     <h1></h1>
                 </section>
                 <section style={style.box}>
-                    <button onClick={()=>(this.myPageClicked())} style={style.buttonRest}>마이 페이지</button>
-                    <button onClick={()=>(this.serviceCenterClicked())} style={style.buttonRest}>고객 센터</button>
+                    <button onClick={this.myPageAnchorClicked} style={style.buttonRest}>마이 페이지</button>
+                    <div style={{display:'flex', flexDirection: 'column'}}>
+                        <button onClick={()=>(this.serviceCenterClicked())} style={style.buttonRest}>고객 센터</button>
+                        <Menu open={Boolean(this.state.mypageAnchor)} anchorEl={this.state.mypageAnchor} onClose={this.myPageAnchorClose}>
+                            <MenuItem onClick={this.loginClicked}>로그인</MenuItem>
+                            <MenuItem onClick={this.myPageClicked}>마이 페이지</MenuItem>
+                        </Menu>
+                    </div>
                     <button onClick={()=>(alert('준비중입니다'))} style={style.buttonEmenrgency}>긴급전화 119</button>
                 </section>
             </div>

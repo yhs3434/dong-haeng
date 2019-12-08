@@ -41,15 +41,15 @@ class Map extends Component {
                         <div style={{display:'flex', flexDirection:'column'}}>
                             <div>
                                 <span>출발지</span>
-                                <input type='text' />
+                                <input className="se_input" type='text' style={{margin:'1rem'}} />
                             </div>
                             <div>
                                 <span>도착지</span>
-                                <input type='text' />
+                                <input className="se_input" type='text' style={{margin:'1rem'}}/>
                             </div>
                         </div>
                         <div>
-                            <button>검색</button>
+                            <button className="se_search_btn">검색</button>
                         </div>
                     </section>
                     <section style={style.leftBottomArticle}>

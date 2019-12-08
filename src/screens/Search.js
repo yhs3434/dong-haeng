@@ -13,6 +13,8 @@ import arrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import arrowRight from '@material-ui/icons/KeyboardArrowRight';
 import gpsFixed from '@material-ui/icons/GpsFixed';
 
+import {withRouter} from 'react-router-dom';
+
 class Search extends Component {
     constructor(props) {
         super(props);
@@ -34,6 +36,10 @@ class Search extends Component {
         this.setState({
             gu: [...guArr.slice(0,val), true, ...guArr.slice(val+1, this.state.gu.length)]
         })
+    }
+
+    searchClicked = () => {
+        this.props.history.push("/map");
     }
 
     render() {
@@ -112,7 +118,7 @@ class Search extends Component {
                             </div>
                         </div>
                         <div>
-                            <button className="se_search_btn">경로 검색</button>
+                            <button onClick={this.searchClicked} className="se_search_btn">경로 검색</button>
                         </div>
                     </div>
                     <div>
@@ -174,4 +180,4 @@ class Search extends Component {
     }
 }
 
-export default Search;
+export default withRouter(Search);
