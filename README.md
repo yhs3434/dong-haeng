@@ -3,7 +3,7 @@
 - description : 웹 디자인 용도의 사이트.
   따라서 DB를 연동하지 않고, 오직 하드코딩으로 정보를 출력합니다.
 - member
-  - designer : Kin Ye Ji, Park Su Jeong
+  - designer : Kim Ye Ji, Park Su Jeong
   - developer : Yoon Han Sol
 
 
